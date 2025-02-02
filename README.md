@@ -9,10 +9,10 @@ An interactive quiz application built with React (Vite) that fetches quiz questi
 🛠 Tech Stack
 Frontend: React (Vite), JavaScript
 Backend API: Node.js, Express.js (expected API at http://localhost:5000/api/quiz)
+
+
+
 📂 Project Structure
-php
-Copy
-Edit
 📦 quiz-app
  ┣ 📂 src
  ┃ ┣ 📜 App.jsx        # Manages quiz state and renders components
@@ -24,6 +24,10 @@ Edit
  ┣ 📜 package.json     # Project dependencies
  ┣ 📜 vite.config.js   # Vite configuration
  ┗ 📜 README.md        # Project documentation
+
+
+
+ 
 🛠 Installation and Setup
 Clone the Repository
 
