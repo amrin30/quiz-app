@@ -1,7 +1,11 @@
-.appContainer {
+*{
+  padding: 0;
+  margin: 0;
   
+}
+ .appContainer {
   min-height: 100vh;
-  background: linear-gradient(to right, #4f6cfd, #9a63f6);
+  background: linear-gradient(to right, #00c6ff, #0072ff); /* New gradient background */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -9,13 +13,12 @@
 }
 
 .quizContainer {
-  
-  background-color: white;
   padding: 30px;
   border-radius: 10px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   width: 100%;
   max-width: 900px;
+  background-color: #ffffff; /* White background for quiz container */
 }
 
 .loadingContainer {
@@ -36,4 +39,3 @@
   font-weight: bold;
   color: #d9534f;
 }
-

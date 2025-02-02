@@ -1,25 +1,29 @@
 
-   .quizSummaryContainer {
+
+  .quizSummaryContainer {
     text-align: center;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     padding: 20px;
-    
+    /* background: linear-gradient(135deg, #FFB6C1, #FF69B4); New gradient background */
     border-radius: 15px;
     animation: fadeIn 1s ease-out;
   }
   
   .resultBox {
     padding: 35px;
-    background: linear-gradient(135deg, #7f7fd5, #86a8e7, #91eae4);
+    background: white; /* Keep result box white for contrast */
     border-radius: 12px;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    /* box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1); */
     width: 100%;
     max-width: 600px;
     animation: scaleUp 1s ease-out;
   }
+  
+  /* Existing styles remain unchanged */
+  
   
   .header {
     font-size: 32px;

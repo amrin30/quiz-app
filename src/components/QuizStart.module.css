@@ -1,65 +1,30 @@
-/* .quizContainer {
-    text-align: center;
-    padding: 20px;
-    font-family: Arial, sans-serif;
-  }
-  
-  .quizHeader {
-    font-size: 24px;
-    font-weight: bold;
-    margin-bottom: 20px;
-    color: #333;
-  }
-  
-  .quizDescription {
-    font-size: 16px;
-    margin-bottom: 30px;
-    color: #666;
-  }
-  
-  .startButton {
-    background-color: #007bff;
-    color: white;
-    font-size: 16px;
-    font-weight: bold;
-    padding: 12px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-  }
-  
-  .startButton:hover {
-    background-color: #0056b3;
-    transform: scale(1.05);
-  }
-   */
 
 
    .quizStartContainer {
+    /* border: 2px solid red; */
     text-align: center;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     padding: 30px;
-    background: linear-gradient(145deg, #00bcd4, #009688);
+    /* background: linear-gradient(145deg, #00bcd4, #009688); */
     border-radius: 15px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    /* box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); */
     animation: fadeIn 1s ease-out;
   }
   
   .header {
     font-size: 32px;
     font-weight: 600;
-    color: white;
+    color: black;
     margin-bottom: 20px;
     animation: slideInFromTop 1s ease-out;
   }
   
   .description {
     font-size: 20px;
-    color: white;
+    color: black;
     margin-bottom: 25px;
     opacity: 0;
     animation: fadeInDescription 1.5s ease-out forwards;

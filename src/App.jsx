@@ -1,5 +1,4 @@
 
-
 import { useState, useEffect } from "react";
 import QuizStart from "./components/QuizStart";
 import QuizQuestion from "./components/QuizQuestion";
@@ -14,6 +13,10 @@ function App() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [quizStarted, setQuizStarted] = useState(false);
+  const [perfectScore, setPerfectScore] = useState(false); // Track perfect score achievement
+  const [fastCompletion, setFastCompletion] = useState(false); // Track fast completion achievement
+  const [quizStartTime, setQuizStartTime] = useState(null); // Store the start time for calculating quiz duration
+  const [quizEndTime, setQuizEndTime] = useState(null); // Store the end time to calculate total time spent
 
   useEffect(() => {
     fetchQuizData();
@@ -45,25 +48,36 @@ function App() {
     setCurrentQuestion(0);
     setScore(0);
     setShowSummary(false);
+    setQuizStartTime(Date.now()); // Capture the start time when quiz starts
   };
 
   const handleAnswer = (isCorrect) => {
     console.log("Answer received in App:", isCorrect);
-    console.log("Current question:", quizData[currentQuestion]);
-
     if (isCorrect) {
-      setScore((prevScore) => {
-        const newScore = prevScore + 1;
-        console.log("New score:", newScore);
-        return newScore;
-      });
+      setScore((prevScore) => prevScore + 1);
     }
+    moveToNextQuestion();
+  };
 
+  const moveToNextQuestion = () => {
     const nextQuestion = currentQuestion + 1;
     if (nextQuestion < quizData.length) {
       setCurrentQuestion(nextQuestion);
     } else {
+      setQuizEndTime(Date.now()); // Capture the end time when quiz is completed
       setShowSummary(true);
+      checkAchievements();
+    }
+  };
+
+  const checkAchievements = () => {
+    if (score === quizData.length) {
+      setPerfectScore(true); // All questions answered correctly
+    }
+
+    const quizDuration = (quizEndTime - quizStartTime) / 1000; // Calculate quiz duration in seconds
+    if (quizDuration <= 30) { // If quiz is completed in 30 seconds or less
+      setFastCompletion(true);
     }
   };
 
@@ -89,7 +103,15 @@ function App() {
   if (!quizStarted) {
     content = <QuizStart onStart={startQuiz} />;
   } else if (showSummary) {
-    content = <QuizSummary score={score} totalQuestions={quizData.length} onRestart={startQuiz} />;
+    content = (
+      <QuizSummary
+        score={score}
+        totalQuestions={quizData.length}
+        perfectScore={perfectScore}
+        fastCompletion={fastCompletion}
+        onRestart={startQuiz}
+      />
+    );
   } else if (quizData && quizData[currentQuestion]) {
     content = (
       <QuizQuestion
@@ -97,6 +119,7 @@ function App() {
         onAnswer={handleAnswer}
         currentQuestion={currentQuestion + 1}
         totalQuestions={quizData.length}
+        nextQuestion={moveToNextQuestion} // Function to go to next question
       />
     );
   } else {

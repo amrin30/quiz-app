@@ -1,34 +1,34 @@
 
-
 import { useState, useEffect } from "react";
-import styles from "./QuizQuestion.module.css"; // Import the CSS module
+import styles from "./QuizQuestion.module.css"; 
 
-function QuizQuestion({ question, onAnswer, currentQuestion, totalQuestions }) {
-  const [timeLeft, setTimeLeft] = useState(60);
+function QuizQuestion({ question, onAnswer, currentQuestion, totalQuestions, nextQuestion }) {
+  const [timeLeft, setTimeLeft] = useState(10);
 
   useEffect(() => {
+    setTimeLeft(10); 
     const timer = setInterval(() => {
-      setTimeLeft((prevTime) => (prevTime > 0 ? prevTime - 1 : 0));
+      setTimeLeft((prevTime) => {
+        if (prevTime <= 1) {
+          clearInterval(timer); 
+          onAnswer(false); 
+          nextQuestion(); 
+          return 0;
+        }
+        return prevTime - 1;
+      });
     }, 1000);
 
-    return () => clearInterval(timer);
-  }, []);
-
-  useEffect(() => {
-    if (timeLeft === 0) {
-      onAnswer(false);
-    }
-  }, [timeLeft, onAnswer]);
+    return () => clearInterval(timer); 
+  }, [question, onAnswer, nextQuestion]); // Trigger timer when question changes
 
   const handleAnswerClick = (selectedAnswer) => {
-    console.log("Question:", question);
-    console.log("Selected answer:", selectedAnswer);
-
     const isCorrect =
       question.options.find((option) => option.description === selectedAnswer && option.is_correct) !== undefined;
 
-    console.log("Is correct:", isCorrect);
-    onAnswer(isCorrect);
+    onAnswer(isCorrect); // Notify parent about the answer
+    clearInterval(timer); // Stop the timer when an answer is selected
+    nextQuestion(); // Move to the next question
   };
 
   if (!question) {
