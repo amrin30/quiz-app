@@ -56,13 +56,8 @@ Start the quiz from the homepage.
 Answer questions within the time limit.
 View your final score at the end.
 Restart the quiz if desired.
-🖼 Screenshots
-Find UI images in the /screenshots folder.
 
-Start Screen	Quiz Question	Quiz Summary
-📽 Video Walkthrough
-A short demo video is available in the /video folder:
-📌 Video Walkthrough
+
 
 📌 Future Enhancements
 Add more question categories.
