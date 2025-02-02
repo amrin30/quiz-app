@@ -1,0 +1,39 @@
+.appContainer {
+  
+  min-height: 100vh;
+  background: linear-gradient(to right, #4f6cfd, #9a63f6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.quizContainer {
+  
+  background-color: white;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 900px;
+}
+
+.loadingContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.loadingText {
+  font-size: 24px;
+  font-weight: bold;
+  color: #4f6cfd;
+}
+
+.errorText {
+  font-size: 24px;
+  font-weight: bold;
+  color: #d9534f;
+}
+
